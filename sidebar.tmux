@@ -21,6 +21,7 @@ set_default_key_binding_options() {
 
 set_key_bindings() {
 	local stored_key_vars="$(stored_key_vars)"
+	local tree_swap_key="$(tree_swap_key)"
 	local search_var
 	local key
 	local pattern
@@ -29,6 +30,8 @@ set_key_bindings() {
 		value="$(get_value_from_option_name "$option")"
 		tmux bind-key "$key" run-shell "$SCRIPTS_DIR/toggle.sh '$value' '#{pane_id}'"
 	done
+
+	tmux bind-key "$tree_swap_key" run-shell "$SCRIPTS_DIR/toggle_panes.sh"
 }
 
 main() {

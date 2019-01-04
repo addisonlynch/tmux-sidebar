@@ -7,14 +7,7 @@ command_exists() {
 }
 
 tree_command() {
-	local user_command="$(tree_user_command)"
-	if [ -n "$user_command" ]; then
-		echo "$user_command"
-	elif command_exists "tree"; then
-		echo "$TREE_COMMAND"
-	else
-		echo "$custom_tree_command"
-	fi
+	if [ -n "$(get_tmux_option)"]
 }
 
 tree_user_command() {
@@ -27,6 +20,10 @@ tree_key() {
 
 tree_focus_key() {
 	get_tmux_option "$TREE_FOCUS_OPTION" "$TREE_FOCUS_KEY"
+}
+
+tree_swap_key() {
+	get_tmux_option "$TREE_SWAP_OPTION" "$TREE_SWAP_KEY"
 }
 
 tree_pager() {

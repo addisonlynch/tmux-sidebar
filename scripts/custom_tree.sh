@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-find . -path '*/.git*' -prune -o -print |
-	sed -e 's;[^/]*/;|___;g;s;___|; |;g'
+GIT=$(command -v git)
+
+watch "${GIT}" log --graph --oneline --all
